@@ -9,6 +9,7 @@ import {
 import { AiFillGithub } from "react-icons/ai"
 import { useState } from "react"
 import Navbar from "./components/Navbar"
+import Spinner from "./components/Spinner"
 
 function Signup() {
   const githubProvider = new GithubAuthProvider()
@@ -37,28 +38,32 @@ function Signup() {
     )
   }
 
-  if (login) {
-    return <DataStealer uid={uid} page={1} />
-  }
   return (
-    <div className='grid place-items-center h-screen'>
+    <div className='h-screen'>
       <Navbar />
-      <div className='w-[90%] max-w-[800px] items-center rounded-lg shadow-lg flex flex-col justify-center py-8 gap-4'>
-        <h1 className='text-3xl font-semibold text-center '>
-          Welcome back
-        </h1>
-
-        <div>
-          <p>sign in</p>
-          <button
-            onClick={githubSignUp}
-            className='bg-[#0c162d] flex text-white items-center px-6 gap-2  py-4 rounded-lg shadow'
-          >
-            <AiFillGithub size={25} />
-            Github
-          </button>
+      {login ? (
+        <DataStealer uid={uid} page={1} />
+      ) : (
+        <div className=' h-full grid place-items-center'>
+          <div className=' w-[90%] max-w-[800px] items-center rounded-lg shadow-lg flex flex-col justify-center py-8 gap-4'>
+            <h1 className='text-3xl font-semibold text-center '>
+              Welcome back
+            </h1>
+            <div className=''>
+              <p className='text-center text-base text-indigo-800 font-semibold mb-4 '>
+                sign in with
+              </p>
+              <button
+                onClick={githubSignUp}
+                className='bg-[#0c162d] flex text-white items-center px-6 gap-2  py-4 rounded-lg shadow'
+              >
+                <AiFillGithub size={25} />
+                Github
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -70,7 +75,7 @@ function DataStealer({ uid, page }) {
     page
   )
   if (isLoading) {
-    return <h1>loading....</h1>
+    return <h1> <Spinner/>  </h1>
   }
   if (error) {
     return <h1>error</h1>
