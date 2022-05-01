@@ -1,8 +1,7 @@
-import { app } from "./firebase.config"
 import { useGetReposQuery } from "./API/githubApi"
+import { useAuth, useUser } from "reactfire"
 import {
   GithubAuthProvider,
-  getAuth,
   signInWithPopup,
   signOut,
 } from "firebase/auth"
@@ -16,8 +15,8 @@ function Signup() {
   const [login, setLogin] = useState(false)
   const [uid, setUid] = useState("")
 
-  const auth = getAuth()
-  console.log(auth)
+  const auth = useAuth()
+  console.log("user", useUser())
 
   const githubSignUp = () => {
     signInWithPopup(auth, githubProvider).then(
@@ -29,12 +28,6 @@ function Signup() {
         //   useGetReposQuery(response.user.providerData.1)
         // )
       }
-    )
-  }
-
-  const signOuthandler = () => {
-    signOut(auth).then(
-      console.log("successfully signed out")
     )
   }
 
@@ -75,7 +68,12 @@ function DataStealer({ uid, page }) {
     page
   )
   if (isLoading) {
-    return <h1> <Spinner/>  </h1>
+    return (
+      <h1>
+        {" "}
+        <Spinner />{" "}
+      </h1>
+    )
   }
   if (error) {
     return <h1>error</h1>

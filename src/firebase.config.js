@@ -1,20 +1,8 @@
-import { initializeApp } from "firebase/app";
-
-const firebaseConfig = {
-  apiKey:
-    "AIzaSyCVoJP1J2wzj9MS7PZDK4Iw_VSBOPJ76b0",
-  authDomain:
-    "github-repo-checker.firebaseapp.com",
+export const firebaseConfig = {
+  apiKey: "AIzaSyCVoJP1J2wzj9MS7PZDK4Iw_VSBOPJ76b0",
+  authDomain: "github-repo-checker.firebaseapp.com",
   projectId: "github-repo-checker",
-  storageBucket:
-    "github-repo-checker.appspot.com",
+  storageBucket: "github-repo-checker.appspot.com",
   messagingSenderId: "1318088406",
-  appId:
-    "1:1318088406:web:fc453fae63be160894a377",
-};
-
-// Initialize Firebase
-
-export const app = initializeApp(
-  firebaseConfig
-);
+  appId: "1:1318088406:web:fc453fae63be160894a377",
+}

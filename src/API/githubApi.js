@@ -23,7 +23,11 @@ export const githubApi = createApi({
       query: (uid, page) =>
         `user/${uid}/repos?per_page=20&page=${page}`,
     }),
+    getFollowers: builder.query({
+      query: () => "user/followers",
+    }),
   }),
 })
 
-export const { useGetReposQuery } = githubApi
+export const { useGetReposQuery, useGetFollowersQuery } =
+  githubApi
