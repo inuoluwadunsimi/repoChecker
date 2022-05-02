@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth"
 import Navbar from "./components/Navbar"
 import Tabs from "./components/Tabs"
 import ProfileData from "./components/ProfileData"
+import RepoData from "./components/RepoData"
 function Homepage() {
   const auth = useAuth()
   const signOuthandler = () => {
@@ -13,8 +14,7 @@ function Homepage() {
     )
   }
   const user = useUser()
-  console.log(user)
-  console.log(auth)
+
   const navigate = useNavigate()
 
   if (!user.data) {
@@ -24,9 +24,11 @@ function Homepage() {
     <>
       <Navbar />
       <Tabs />
-      <div className='grid grid-cols-7 container mx-auto'>
+      <div className='grid grid-cols-7 container mx-auto gap-4'>
         <ProfileData />
+        <RepoData />
       </div>
+
       <button onClick={signOuthandler}>sign out</button>
     </>
   )

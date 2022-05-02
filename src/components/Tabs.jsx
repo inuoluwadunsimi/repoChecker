@@ -43,7 +43,7 @@ function Tabs() {
   const [activeTab, setActiveTab] = useState(1)
   const user = useUser()
   const uid = user.data?.providerData[0]?.uid
-  console.log("uid", uid)
+
   const {
     data: stars,
     loading,

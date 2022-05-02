@@ -1,6 +1,6 @@
 import React from "react"
 import { useGetUserDetailsQuery } from "../API/githubApi"
-import { Orbit } from "@uiball/loaders"
+import Spinner from "./Spinner"
 import { useUser } from "reactfire"
 import {
   PeopleIcon,
@@ -16,24 +16,11 @@ function ProfileData() {
   const person = useUser()
 
   const uid = person.data?.providerData[0]?.uid
-  const {
-    data: user,
-    error,
-    isLoading,
-  } = useGetUserDetailsQuery(uid)
+  const { data: user, isLoading } =
+    useGetUserDetailsQuery(uid)
 
-  console.log("ProfileData", uid, user, isLoading, error)
+  if (isLoading) return <Spinner className='mx-auto' />
 
-  if (isLoading) {
-    return
-    ;<div className='col-span-2 grid place-items-center'>
-      {" "}
-      <Orbit size={35} />
-    </div>
-  }
-  if (error) {
-    return <div> error </div>
-  }
   return (
     <div className='col-span-2'>
       <div>
@@ -52,7 +39,7 @@ function ProfileData() {
         </div>
       </div>
       <button className='bg-transparent text-black font-semibold py-2 px-4 border border-gray-300 rounded w-full mt-4 bg-gray-100'>
-        Follow
+        Edit Profile
       </button>
       {user.bio && (
         <p className='mt-6 text-xl'>{user.bio}</p>

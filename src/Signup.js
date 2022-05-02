@@ -17,17 +17,13 @@ function Signup() {
   const [uid, setUid] = useState("")
 
   const auth = useAuth()
-  console.log("user", useUser())
+
   const navigate = useNavigate()
   const githubSignUp = () => {
     signInWithPopup(auth, githubProvider).then(
       (response) => {
-        console.log(response.user)
         setUid(response.user.providerData[0].uid)
         setLogin(true)
-        // console.log(
-        //   useGetReposQuery(response.user.providerData.1)
-        // )
       }
     )
   }
