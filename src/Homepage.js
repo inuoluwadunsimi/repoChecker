@@ -2,8 +2,9 @@ import React from "react"
 import { useUser, useAuth } from "reactfire"
 import { useNavigate } from "react-router-dom"
 import { signOut } from "firebase/auth"
-import ProfileData from "./components/ProfileData"
 import Navbar from "./components/Navbar"
+import Tabs from "./components/Tabs"
+import ProfileData from "./components/ProfileData"
 function Homepage() {
   const auth = useAuth()
   const signOuthandler = () => {
@@ -13,16 +14,20 @@ function Homepage() {
   }
   const user = useUser()
   console.log(user)
+  console.log(auth)
   const navigate = useNavigate()
-  if (user.status !== "success") {
+
+  if (!user.data) {
     navigate("/signup")
   }
   return (
     <>
-      <div>
-        <Navbar />
+      <Navbar />
+      <Tabs />
+      <div className='grid grid-cols-7 container mx-auto'>
         <ProfileData />
       </div>
+      <button onClick={signOuthandler}>sign out</button>
     </>
   )
 }

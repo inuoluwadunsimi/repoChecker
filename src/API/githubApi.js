@@ -23,11 +23,22 @@ export const githubApi = createApi({
       query: (uid, page) =>
         `user/${uid}/repos?per_page=20&page=${page}`,
     }),
-    getFollowers: builder.query({
-      query: () => "user/followers",
+    getUserDetails: builder.query({
+      query: (uid) => `user/${uid}`,
+    }),
+    getStars: builder.query({
+      query: (uid) => `user/${uid}/starred`,
+    }),
+    getRepoNo: builder.query({
+      query: (uid) => `user/${uid}/repos`,
     }),
   }),
 })
 
-export const { useGetReposQuery, useGetFollowersQuery } =
-  githubApi
+export const {
+  useGetReposQuery,
+  useGetUserDetailsQuery,
+  useGetStarsQuery,
+  useGetRepoNoQuery,
+  useGetfollowersQuery,
+} = githubApi
