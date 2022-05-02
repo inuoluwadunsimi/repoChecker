@@ -39,13 +39,14 @@ function RepoData() {
           <div className='flex-1'>
             <div className='flex gap-2'>
               <hr />
+
               <h3 className='text-xl text-blue-700 font-bold'>
                 {" "}
                 <a href={repo.html_url}>{repo.name}</a>
               </h3>
-              <div className='border rounded-2xl px-3 py-2'>
+              <p className='border rounded-2xl px-3 py-2 h-full'>
                 Public
-              </div>
+              </p>
             </div>
             <p>{repo.description}</p>
             <div className='flex gap-2'>
@@ -59,7 +60,7 @@ function RepoData() {
               <p> Updated on{repo.updated_at}</p>
             </div>
           </div>
-          <div className='flex'>
+          <div className='flex border bg-gray-200 h-full rounded-lg gap-3'>
             <p>
               {" "}
               <StarIcon
