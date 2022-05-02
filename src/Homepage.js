@@ -16,7 +16,6 @@ function Homepage() {
   const user = useUser()
 
   const navigate = useNavigate()
-  console.log(user)
   useEffect(() => {
     if (!user.data) {
       navigate("/signup")
