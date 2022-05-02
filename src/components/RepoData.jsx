@@ -31,39 +31,49 @@ function RepoData() {
     return <div> error </div>
   }
   return (
-    <div className='col-span-5'>
+    <div className='col-span-5 mt-4'>
       <RepoSearch />
+
       {repos.map((repo) => (
-        <div className='flex'>
-          <div className='flex flex-1 justify-between'>
-            <div>
+        <div className='flex  mt-4 w-full'>
+          <div className='flex-1'>
+            <div className='flex gap-2'>
+              <hr />
               <h3 className='text-xl text-blue-700 font-bold'>
                 {" "}
                 <a href={repo.html_url}>{repo.name}</a>
               </h3>
-              <div>Public</div>
-              <p>{repo.description}</p>
-              <div className='flex gap-2'>
-                <p>{repo.language}</p>
-                {repo.stargazer_count > 0 && (
-                  <div>
-                    <StarIcon size={24} className='mt-2' />
-                    {repo.stargazer_count}
-                  </div>
-                )}
-                <p>{repo.updated_at}</p>
+              <div className='border rounded-2xl px-3 py-2'>
+                Public
               </div>
             </div>
-            <div>
-              <p>
-                {" "}
-                <StarIcon /> Star{" "}
-              </p>
-              <p>
-                {" "}
-                <TriangleDownIcon />{" "}
-              </p>
+            <p>{repo.description}</p>
+            <div className='flex gap-2'>
+              <p>{repo.language}</p>
+              {repo.stargazer_count > 0 && (
+                <div>
+                  <StarIcon size={24} className='mt-2' />
+                  {repo.stargazer_count}
+                </div>
+              )}
+              <p> Updated on{repo.updated_at}</p>
             </div>
+          </div>
+          <div className='flex'>
+            <p>
+              {" "}
+              <StarIcon
+                size={16}
+                className='mt-2'
+              /> Star{" "}
+            </p>
+            <p>
+              {" "}
+              <TriangleDownIcon
+                size={16}
+                className='mt-2'
+              />{" "}
+            </p>
           </div>
         </div>
       ))}

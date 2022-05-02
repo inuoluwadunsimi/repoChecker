@@ -13,27 +13,27 @@ function RepoSearch() {
     page
   )
   return (
-    <div className='flex flex-row justify-between'>
-      <div>
-        <input
-          className='text-gray-300 rounded-lg h-auto py-2 px-4 border border-gray-300  w-full'
-          type='text'
-          placeholder='Find a repository...'
-        />
-      </div>
-      <div className='flex flex-row gap-2'>
-        <button className='flex flex-row bg-gray-300 rounded-lg border'>
-          <p>Type</p>{" "}
-          <TriangleDownIcon size={12} className='mt-2' />{" "}
-        </button>
-        <button>
-          <p>Language</p> <TriangleDownIcon size={12} />
-        </button>
-        <button>
-          Sort <TriangleDownIcon size={12} />
-        </button>
+    <div className='flex flex-row justify-between gap-4'>
+      <input
+        className='placeholder:text-gray-300 flex-[2] rounded-lg h-auto py-2 px-4 border border-gray-300  w-full'
+        type='text'
+        placeholder='Find a repository...'
+      />
+
+      <div className='flex flex-row gap-2 flex-1 '>
+        <SearchDropdown title='Type' />
+        <SearchDropdown title='Language' />
+        <SearchDropdown title='sort' />
       </div>
     </div>
+  )
+}
+function SearchDropdown({ title }) {
+  return (
+    <button className='flex flex-1 flex-row bg-gray-300 rounded-lg border items-center justify-center'>
+      <p>{title}</p>{" "}
+      <TriangleDownIcon size={12} className='mt-2' />
+    </button>
   )
 }
 
