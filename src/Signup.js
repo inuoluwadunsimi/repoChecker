@@ -31,7 +31,7 @@ function Signup() {
     if (login) {
       navigate("/")
     }
-  }, [login])
+  }, [login, navigate])
 
   return (
     <div className='h-screen'>

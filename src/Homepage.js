@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useUser, useAuth } from "reactfire"
 import { useNavigate } from "react-router-dom"
 import { signOut } from "firebase/auth"
@@ -16,10 +16,12 @@ function Homepage() {
   const user = useUser()
 
   const navigate = useNavigate()
-
-  if (!user.data) {
-    navigate("/signup")
-  }
+  console.log(user)
+  useEffect(() => {
+    if (!user.data) {
+      navigate("/signup")
+    }
+  })
   return (
     <>
       <Navbar />
